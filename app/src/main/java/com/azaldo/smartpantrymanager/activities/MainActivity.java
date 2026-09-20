@@ -1,10 +1,14 @@
 package com.azaldo.smartpantrymanager.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -77,5 +81,24 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
         pantryRepository.deleteItem(item.getId());
         Toast.makeText(this, item.getName() + " removed", Toast.LENGTH_SHORT).show();
         refreshPantryList();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_suggested_recipes) {
+            startActivity(new Intent(this, SuggestedRecipesActivity.class));
+            return true;
+        } else if (id == R.id.action_settings) {
+            Toast.makeText(this, "Settings screen coming soon", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

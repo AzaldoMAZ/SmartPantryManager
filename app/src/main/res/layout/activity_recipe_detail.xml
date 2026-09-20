@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/textDetailName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_dark"
+            tools:text="Chicken and Rice"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            android:id="@+id/textDetailDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            tools:text="A filling, one-pot dinner."
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Ingredients"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/pantry_green" />
+
+        <TextView
+            android:id="@+id/textDetailIngredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_dark"
+            android:lineSpacingExtra="4dp"
+            tools:text="- 500 g chicken\n- 200 g rice\n- 1 pieces onion"
+            xmlns:tools="http://schemas.android.com/tools" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Preparation"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/pantry_green" />
+
+        <TextView
+            android:id="@+id/textDetailSteps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_dark"
+            android:lineSpacingExtra="4dp"
+            tools:text="1. Cook the rice.\n2. Cook the chicken.\n3. Combine and serve."
+            xmlns:tools="http://schemas.android.com/tools" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -21,6 +21,14 @@
             android:name=".activities.AddEditIngredientActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".activities.SuggestedRecipesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.RecipeDetailActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

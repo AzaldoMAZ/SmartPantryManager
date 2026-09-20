@@ -46,11 +46,8 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
         pantryAdapter = new PantryAdapter(new ArrayList<>(), this);
         recyclerViewPantry.setAdapter(pantryAdapter);
 
-        fabAddIngredient.setOnClickListener(v -> {
-            // AddEditIngredientActivity is added in the next commit.
-            // Wired here so the click target already exists once it lands.
-            Toast.makeText(this, "Add ingredient screen coming next", Toast.LENGTH_SHORT).show();
-        });
+        fabAddIngredient.setOnClickListener(v ->
+                startActivity(AddEditIngredientActivity.newAddIntent(this)));
     }
 
     @Override
@@ -72,8 +69,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
 
     @Override
     public void onEditClicked(PantryItem item) {
-        // Wired up to AddEditIngredientActivity in the next commit.
-        Toast.makeText(this, "Edit: " + item.getName(), Toast.LENGTH_SHORT).show();
+        startActivity(AddEditIngredientActivity.newEditIntent(this, item.getId()));
     }
 
     @Override

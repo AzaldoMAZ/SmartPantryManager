@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
             startActivity(new Intent(this, SuggestedRecipesActivity.class));
             return true;
         } else if (id == R.id.action_settings) {
-            Toast.makeText(this, "Settings screen coming soon", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);

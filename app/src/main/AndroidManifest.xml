@@ -29,6 +29,10 @@
             android:name=".activities.RecipeDetailActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

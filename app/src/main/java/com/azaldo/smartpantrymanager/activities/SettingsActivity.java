@@ -11,7 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.azaldo.smartpantrymanager.R;
 import com.azaldo.smartpantrymanager.repositories.PantryRepository;
+import com.azaldo.smartpantrymanager.repositories.RecipeRepository;
 import com.azaldo.smartpantrymanager.repositories.SettingsRepository;
+
+import android.widget.TextView;
 
 /**
  * Settings screen. Two settings are genuinely functional rather than
@@ -25,6 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private SettingsRepository settingsRepository;
     private PantryRepository pantryRepository;
+    private RecipeRepository recipeRepository;
 
     // Guards against the Spinner's onItemSelected firing once automatically
     // when setSelection() is called during setup, which would otherwise
@@ -39,10 +43,21 @@ public class SettingsActivity extends AppCompatActivity {
 
         settingsRepository = new SettingsRepository(this);
         pantryRepository = new PantryRepository(this);
+        recipeRepository = new RecipeRepository(this);
 
         setUpExpiryAlertsSwitch();
         setUpPreferredUnitSpinner();
         setUpClearPantryButton();
+        showDatabaseInfo();
+    }
+
+    private void showDatabaseInfo() {
+        int pantryCount = pantryRepository.getAllItems().size();
+        int recipeCount = recipeRepository.getAllRecipes().size();
+
+        TextView textDatabaseInfo = findViewById(R.id.textDatabaseInfo);
+        textDatabaseInfo.setText(pantryCount + " pantry item" + (pantryCount == 1 ? "" : "s") + " stored\n"
+                + recipeCount + " recipe" + (recipeCount == 1 ? "" : "s") + " available");
     }
 
     private void setUpExpiryAlertsSwitch() {
@@ -89,6 +104,7 @@ public class SettingsActivity extends AppCompatActivity {
                         .setPositiveButton("Clear", (dialog, which) -> {
                             pantryRepository.clearAllItems();
                             Toast.makeText(this, "Pantry data cleared", Toast.LENGTH_SHORT).show();
+                            showDatabaseInfo();
                         })
                         .setNegativeButton("Cancel", null)
                         .show());

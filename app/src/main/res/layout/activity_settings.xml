@@ -67,4 +67,23 @@
         android:textSize="13sp"
         android:textColor="@color/text_secondary" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Database information"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/pantry_green" />
+
+    <TextView
+        android:id="@+id/textDatabaseInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="13sp"
+        android:textColor="@color/text_secondary"
+        tools:text="12 pantry items stored\n20 recipes available"
+        xmlns:tools="http://schemas.android.com/tools" />
+
 </LinearLayout>

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.azaldo.smartpantrymanager.R;
 import com.azaldo.smartpantrymanager.models.PantryItem;
 import com.azaldo.smartpantrymanager.repositories.PantryRepository;
+import com.azaldo.smartpantrymanager.repositories.SettingsRepository;
 import com.azaldo.smartpantrymanager.utils.IngredientNormalizer;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -41,6 +42,7 @@ public class AddEditIngredientActivity extends AppCompatActivity {
     private Spinner spinnerUnit;
 
     private PantryRepository pantryRepository;
+    private SettingsRepository settingsRepository;
     private long editingItemId = NO_ITEM_ID;
     private String selectedExpiryDate = "";
 
@@ -50,6 +52,7 @@ public class AddEditIngredientActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_edit_ingredient);
 
         pantryRepository = new PantryRepository(this);
+        settingsRepository = new SettingsRepository(this);
         bindViews();
         setUpUnitSpinner();
         setUpExpiryDatePicker();
@@ -60,6 +63,7 @@ public class AddEditIngredientActivity extends AppCompatActivity {
             loadExistingItem(editingItemId);
         } else {
             setTitle("Add Ingredient");
+            applyPreferredUnitDefault();
         }
 
         findViewById(R.id.buttonSaveIngredient).setOnClickListener(v -> attemptSave());
@@ -100,6 +104,20 @@ public class AddEditIngredientActivity extends AppCompatActivity {
             dialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000L);
             dialog.show();
         });
+    }
+
+    /**
+     * Only applied when adding a new item (never overrides an existing
+     * item's saved unit when editing). Makes the Settings screen's
+     * preferred-unit choice genuinely save the user a tap on every add,
+     * rather than just being a stored value nothing else reads.
+     */
+    private void applyPreferredUnitDefault() {
+        ArrayAdapter adapter = (ArrayAdapter) spinnerUnit.getAdapter();
+        int preferredPosition = adapter.getPosition(settingsRepository.getPreferredUnit());
+        if (preferredPosition >= 0) {
+            spinnerUnit.setSelection(preferredPosition);
+        }
     }
 
     private void loadExistingItem(long itemId) {

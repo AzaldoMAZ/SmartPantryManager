@@ -17,6 +17,7 @@ import com.azaldo.smartpantrymanager.R;
 import com.azaldo.smartpantrymanager.adapters.PantryAdapter;
 import com.azaldo.smartpantrymanager.models.PantryItem;
 import com.azaldo.smartpantrymanager.repositories.PantryRepository;
+import com.azaldo.smartpantrymanager.repositories.SettingsRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
     private RecyclerView recyclerViewPantry;
     private TextView textEmptyPantry;
     private PantryRepository pantryRepository;
+    private SettingsRepository settingsRepository;
     private PantryAdapter pantryAdapter;
 
     @Override
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
         setContentView(R.layout.activity_main);
 
         pantryRepository = new PantryRepository(this);
+        settingsRepository = new SettingsRepository(this);
 
         recyclerViewPantry = findViewById(R.id.recyclerViewPantry);
         textEmptyPantry = findViewById(R.id.textEmptyPantry);
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
 
     private void refreshPantryList() {
         List<PantryItem> items = pantryRepository.getAllItems();
+        pantryAdapter.setExpiryAlertsEnabled(settingsRepository.isExpiryAlertsEnabled());
         pantryAdapter.updateData(items);
         showEmptyState(items.isEmpty());
     }

@@ -16,6 +16,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/imageEmptyPantry"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_empty_pantry"
+        android:contentDescription="@null"
+        android:alpha="0.5"
+        app:tint="@color/text_secondary"
+        app:layout_constraintBottom_toTopOf="@id/textEmptyPantry"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
     <TextView
         android:id="@+id/textEmptyPantry"
         android:layout_width="0dp"
@@ -26,7 +40,7 @@
         android:gravity="center"
         android:padding="32dp"
         android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageEmptyPantry"
         app:layout_constraintBottom_toTopOf="@id/buttonEmptyAddIngredient"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

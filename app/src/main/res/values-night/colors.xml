@@ -1,0 +1,7 @@
+<resources>
+    <!-- Brand accent colors stay the same in dark mode - only surfaces and text invert. -->
+    <color name="background_light">#121212</color>
+    <color name="surface_color">#1E1E1E</color>
+    <color name="text_dark">#F5F5F5</color>
+    <color name="text_secondary">#B0B0B0</color>
+</resources>

@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.OnP
 
     private void showEmptyState(boolean isEmpty) {
         textEmptyPantry.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+        findViewById(R.id.imageEmptyPantry).setVisibility(isEmpty ? View.VISIBLE : View.GONE);
         findViewById(R.id.buttonEmptyAddIngredient).setVisibility(isEmpty ? View.VISIBLE : View.GONE);
         recyclerViewPantry.setVisibility(isEmpty ? View.GONE : View.VISIBLE);
     }

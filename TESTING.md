@@ -5,35 +5,41 @@ writing the report. Tick items off as you confirm them yourself - this
 file is a checklist, not proof they've been tested.
 
 ## Pantry functionality
-- [ ] Add ingredient (name, quantity, unit, no expiry date)
-- [ ] Add ingredient with an expiry date
-- [ ] View ingredient in the Pantry List
-- [ ] Edit an ingredient's quantity
+- [x] Add ingredient (name, quantity, unit, no expiry date) - confirmed on Pixel 6 emulator
+- [x] Add ingredient with an expiry date - confirmed (Chicken/Rice with expiry dates)
+- [x] View ingredient in the Pantry List - confirmed
+- [x] Edit an existing ingredient (unit corrected on Eggs/Butter/Salt) - confirmed, saves correctly
 - [ ] Delete an ingredient
-- [ ] Close and reopen the app - confirm the ingredient is still there
-- [ ] Empty pantry shows the empty-state message and "Add your first ingredient" button
+- [x] Close and reopen the app - confirm the ingredient is still there - confirmed, all 18 items persisted after fully killing and reopening the app
+- [x] Empty pantry shows the empty-state message and "Add your first ingredient" button - confirmed
 - [ ] Submit the Add form with an empty name - see the inline error
 - [ ] Submit the Add form with a negative or non-numeric quantity - see the inline error
 
 ## Recipe / strict-matching functionality (the core rule)
-- [ ] Add every ingredient a recipe needs, in sufficient quantity - confirm it appears in Suggested Recipes
+- [x] Add every ingredient a recipe needs, in sufficient quantity - confirm it appears in Suggested Recipes - confirmed repeatedly, up to 10+ recipes matching simultaneously with a realistic pantry
 - [ ] Remove one required ingredient - confirm the recipe disappears
 - [ ] Add the ingredient back - confirm the recipe reappears
 - [ ] Add a required ingredient but in a quantity below what's needed - confirm the recipe does NOT appear
-- [ ] Add an ingredient as "Tomatoes" when a recipe requires "tomato" - confirm it still matches
+- [x] Add an ingredient as "Tomatoes" when a recipe requires "tomato" - confirm it still matches - confirmed via Tomato Omelette appearing
 - [ ] Add an ingredient in ALL CAPS or mixed case - confirm it still matches
 - [ ] Add a required ingredient as 1 kg when the recipe needs 500 g - confirm it matches (compatible unit conversion)
-- [ ] Add a required ingredient in an incompatible unit (e.g. "pieces" when the recipe needs "g") - confirm it does NOT match
-- [ ] Empty pantry - confirm Suggested Recipes shows the no-recipes-match message
-- [ ] Open a recipe's detail screen - confirm ingredients and steps display correctly
+- [x] Add a required ingredient in an incompatible unit (e.g. "pieces" when the recipe needs "g") - confirm it does NOT match - confirmed: Eggs/Butter/Salt saved as "g" correctly failed to match until units were corrected to pieces/tablespoons/teaspoons
+- [x] Empty pantry - confirm Suggested Recipes shows the no-recipes-match message - confirmed
+- [x] Open a recipe's detail screen - confirm ingredients and steps display correctly - confirmed (Potato Omelette)
 
 ## UI and stability
-- [ ] Navigate Pantry List -> Suggested Recipes -> Recipe Detail -> back -> back
+- [x] Navigate Pantry List -> Suggested Recipes -> Recipe Detail -> back -> back - confirmed repeatedly during testing
 - [ ] Rotate the screen on each screen (if you enable rotation) - confirm no crash
 - [ ] Toggle expiry alerts in Settings, close and reopen the app - confirm it stayed toggled
 - [ ] Change preferred unit in Settings, close and reopen the app - confirm it stayed changed
 - [ ] Clear pantry data from Settings - confirm the confirmation dialog appears and cancelling does nothing
 - [ ] Confirm clearing pantry data actually empties the Pantry List
+
+## Settings screen functionality (confirmed 2026-09-27)
+- [x] Database information shows live, correct counts (confirmed: "18 pantry items stored, 20 recipes available")
+- [x] Expiry alerts toggle and preferred unit spinner both visible and interactive
+- [ ] Preferred unit actually defaults the Add Ingredient form's spinner (code added, not yet re-tested after latest pull)
+- [ ] Expiry-soon items show in red on the Pantry List when alerts are enabled (code added, not yet re-tested after latest pull)
 
 ## Automated tests (run via Android Studio's test runner)
 - [x] IngredientNormalizerTest - capitalization, plurals, aliases, double-s guard, punctuation

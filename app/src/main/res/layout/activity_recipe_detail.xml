@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_light">
@@ -8,67 +10,123 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/textDetailName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/text_dark"
-            tools:text="Chicken and Rice"
-            xmlns:tools="http://schemas.android.com/tools" />
+            tools:text="Chicken and Rice" />
 
         <TextView
             android:id="@+id/textDetailDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
             android:textSize="14sp"
             android:textColor="@color/text_secondary"
-            tools:text="A filling, one-pot dinner."
-            xmlns:tools="http://schemas.android.com/tools" />
+            tools:text="A filling, one-pot dinner." />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Ingredients"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/pantry_green" />
-
-        <TextView
-            android:id="@+id/textDetailIngredients"
+        <!-- Ingredients -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="14sp"
-            android:textColor="@color/text_dark"
-            android:lineSpacingExtra="4dp"
-            tools:text="- 500 g chicken\n- 200 g rice\n- 1 pieces onion"
-            xmlns:tools="http://schemas.android.com/tools" />
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="@color/surface_color"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Preparation"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/pantry_green" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/textDetailSteps"
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/pantry_green" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ingredients"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pantry_green" />
+
+                    <TextView
+                        android:id="@+id/textDetailIngredients"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_dark"
+                        android:lineSpacingExtra="4dp"
+                        tools:text="- 500 g chicken\n- 200 g rice\n- 1 pieces onion" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Preparation -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textSize="14sp"
-            android:textColor="@color/text_dark"
-            android:lineSpacingExtra="4dp"
-            tools:text="1. Cook the rice.\n2. Cook the chicken.\n3. Combine and serve."
-            xmlns:tools="http://schemas.android.com/tools" />
+            app:cardBackgroundColor="@color/surface_color"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/pantry_orange" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Preparation"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/pantry_orange" />
+
+                    <TextView
+                        android:id="@+id/textDetailSteps"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textSize="15sp"
+                        android:textColor="@color/text_dark"
+                        android:lineSpacingExtra="4dp"
+                        tools:text="1. Cook the rice.\n2. Cook the chicken.\n3. Combine and serve." />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
